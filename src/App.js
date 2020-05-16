@@ -1,19 +1,55 @@
 import React from 'react';
+import ArrowKeysReact from 'arrow-keys-react';
 import './App.css';
 
 class App extends React.Component {
   constructor(props){
     super(props);
+    this.playGridDiv = React.createRef();
     this.state = {
       row: 0,
       col: 0,
       gridSize: 4
     };
+    ArrowKeysReact.config({
+      left: () => {
+        if (this.state.col > 0) {
+          this.setState({
+            col: this.state.col - 1
+          });
+        }
+      },
+      right: () => {
+        if (this.state.col < this.state.gridSize-1){
+          this.setState({
+            col: this.state.col + 1
+          });
+        }
+      },
+      up: () => {
+        if (this.state.row > 0) {
+          this.setState({
+            row: this.state.row - 1
+          });
+        }
+      },
+      down: () => {
+        if (this.state.row < this.state.gridSize-1){
+          this.setState({
+            row: this.state.row + 1
+          });
+        }
+      }
+    });
+  }
+
+  componentDidMount() {
+    this.playGridDiv.current.focus();
   }
 
   render(){
     return (
-      <div className="PlayGridDiv">
+      <div ref={this.playGridDiv} {...ArrowKeysReact.events} tabIndex="1" className="PlayGridDiv">
         <PlayGrid row={this.state.row} col={this.state.col}/>
       </div>
     );

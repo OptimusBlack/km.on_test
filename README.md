@@ -2,4 +2,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The project can be started with the following command on localhost development server:
 
-###`npm start`
+### `npm start`

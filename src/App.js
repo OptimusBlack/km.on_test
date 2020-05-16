@@ -44,6 +44,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    //Brings the parent div in focus so that it can register the keyboard events
     this.playGridDiv.current.focus();
   }
 
@@ -76,7 +77,7 @@ class PlayGrid extends React.Component {
       
       for (var j = 0; j < 4; j++){
         let cellID = `cell${i}-${j}`;
-        cell.push(<td key={cellID} id={cellID}>{this.props.row === i && this.props.col === j && <Dot/>}</td>);
+        cell.push(<td key={cellID} id={cellID}>{this.props.row === i && this.props.col === j && <Dot/>}</td>); //Add the Dot component on the current cell
       }
       rows.push(<tr key={i} id={rowID}>{cell}</tr>);
     }
